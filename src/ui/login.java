@@ -32,6 +32,33 @@ public class login {
     //登录操作
     public void login(){
         System.out.println("用户选择了登录");
+        int cishu=3;
+        Scanner sc=new Scanner(System.in);
+        while (true) {
+            System.out.println("请输入用户名：");
+            String username=sc.next();
+            System.out.println("请输入密码：");
+            String password=sc.next();
+            for (int i = 0; i < list.size(); i++) {
+                User u=list.get(i);
+                if(!(u.getUsername().equals(username)&&u.getPassword().equals(password))){
+                    System.out.println("用户名或密码错误,请重新输入");
+                    cishu--;
+                }
+                else{
+                    System.out.println("登录成功");
+                    return;
+                }
+
+                }
+            if(cishu==0){
+                System.out.println("输入错误次数过多，退出登录");
+                break;
+
+            }
+
+        }
+
     }
     //注册操作
     public void register(){
@@ -90,6 +117,7 @@ public class login {
         list.add(u);
         System.out.println("注册成功");
     }
+
     public boolean checklen(int min,int max,String str){
         return str.length()>=min&&str.length()<=max;
     }

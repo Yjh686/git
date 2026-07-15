@@ -59,9 +59,31 @@ public class fighting {
 
                 if(!enemycharacter.isalive()){
                     System.out.println("✧你击败了"+enemycharacter.name);
+                    System.out.print("你的HP为:");
+                    System.out.println(HPbar(h.name,h.HP,h.maxHP));
                     wins++;
                     count++;
                     System.out.println("当前胜场:"+wins);
+                    System.out.println("你胜利了是否要继续？(y/n)");
+                    Scanner sc=new Scanner(System.in);
+                    String choose=sc.next();
+                    if(choose.equals("n")){
+                        System.out.println("游戏结束，感谢游玩！");
+                        return;
+                    }
+                    else{
+                        System.out.println("继续战斗，祝你好运！！！");
+                        System.out.println("你会回血15HP，准备下一场战斗！！！");
+                        h.heal(15);
+                    }
+                    if(wins%3==0){
+                        System.out.println("✧恭喜你通过了3关，属性提升");
+                        h.maxHP+=30;
+                        h.HP+=20;
+                        h.atk+=5;
+                        h.defend+=5;
+                    }
+
                     break;
                 }
                 enemyturn(enemycharacter,h);

@@ -9,7 +9,7 @@ public class character {
 
      public character(){}
 
-    public character(String name, int atk, int defend, int HP) {
+    public character(String name, int HP, int atk, int defend) {
         this.name = name;
         this.atk = atk;
         this.defend = defend;
@@ -35,8 +35,8 @@ public class character {
         }
     }
 
-    public void show(){
-        System.out.println(name+"[当前生命:"+HP+" 攻击:"+atk+" 防御:"+defend+"]");
+    public String show(){
+        return name+"[当前生命:"+HP+" 攻击:"+atk+" 防御:"+defend+"]";
     }
 
 

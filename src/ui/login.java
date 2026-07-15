@@ -18,7 +18,7 @@ public class login {
             Scanner sc =new Scanner(System.in);
             int choose=sc.nextInt();
             switch(choose){
-                case 1-> login();
+                case 1-> login1();
                 case 2-> register();
                 case 3->{
                     System.out.println("用户选择了退出");
@@ -31,7 +31,7 @@ public class login {
 
     }
     //登录操作
-    public void login() {
+    public void login1() {
         System.out.println("用户选择了登录");
         //判断用户名 获取用户对象
         Scanner sc = new Scanner(System.in);

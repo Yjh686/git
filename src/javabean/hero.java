@@ -12,8 +12,8 @@ public class hero extends character{
         skill=new ArrayList<String>();
     }
 
-    public hero(String name, int atk, int defend, int HP) {
-        super(name, atk, defend, HP);
+    public hero(String name, int HP, int atk, int def) {
+        super(name,HP,atk,def);
         skill=new ArrayList<String>();
     }
 }

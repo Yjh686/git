@@ -7,7 +7,7 @@ public class enemy extends character{
     public enemy(){
         super();
     }
-    public enemy(String name, int atk, int defend, int HP, String skill) {
+    public enemy(String name, int HP, int atk, int defend, String skill) {
         super(name, atk, defend, HP);
         this.skill = skill;
     }

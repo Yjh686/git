@@ -8,7 +8,7 @@ public class enemy extends character{
         super();
     }
     public enemy(String name, int HP, int atk, int defend, String skill) {
-        super(name, atk, defend, HP);
+        super(name, HP, atk, defend);
         this.skill = skill;
     }
     @Override

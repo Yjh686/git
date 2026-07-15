@@ -4,6 +4,7 @@ import javabean.enemy;
 import javabean.hero;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 public class fighting {
@@ -12,16 +13,71 @@ public class fighting {
         System.out.println("战斗开始，"+username+"！");
         System.out.println("-----------------------------");
 
-        cheat_hero(username);
+        hero h=cheat_hero(username);
 
         ArrayList<enemy> enemies=new ArrayList<>();
         enemies.add(new enemy("初级战士",100,15,10,"猛击"));
         enemies.add(new enemy("敏捷刺客",80,20,5,"偷袭"));
         enemies.add(new enemy("重装坦克",130,10,15,"护盾防御"));
         enemies.add(new enemy("神秘法师",60,25,3,"冰冻法术"));
+
+
+        System.out.println("角色创建成功");
+        System.out.println("你的初始属性为:"+h.show());
+        System.out.println("你的技能为:"+h.skill.toString());
+
+        int count=1;
+        int wins=0;
+        while(h.isalive()){
+            if(wins>0){
+                for (int i = 0; i < enemies.size(); i++) {
+                    enemy e=enemies.get(i);
+                    e.maxHP+=10;
+                    e.HP=e.maxHP;
+                    e.atk+=3;
+                    e.defend+=2;
+                }
+            }
+            Random r=new Random();
+            int index=r.nextInt(enemies.size());
+            enemy enemycharacter=enemies.get(index);
+            System.out.println(enemycharacter.show());
+
+
+            System.out.println("-----------------------------");
+            System.out.println("第"+count+"关 对手是"+enemycharacter.name);
+            int round=1;
+            while(h.isalive()){
+                System.out.println("第"+round+"回合");
+                System.out.println(HPbar(h.name,h.HP,h.maxHP));
+                System.out.println(HPbar(enemycharacter.name,enemycharacter.HP,enemycharacter.maxHP));
+                System.exit(0);
+            }
+
+
+        }
+
     }
 
-    public void cheat_hero(String username){
+    public String HPbar(String name,int HP,int maxHP){
+        int barlen=20;
+        StringBuilder sb=new StringBuilder();
+        int a=(int)((HP*1.0/maxHP)*barlen);
+        sb.append(name).append(":[");
+        for (int i = 0; i < barlen; i++) {
+            if(i<a){
+                sb.append("▋");
+            }
+            else{
+                sb.append(" ");
+            }
+        }
+        sb.append("]").append(HP).append("/").append(maxHP).append("HP");
+        return sb.toString();
+
+    }
+
+    public hero cheat_hero(String username){
         System.out.println("创建你的角色");
         System.out.println("你的角色为:"+username);
 
@@ -42,7 +98,7 @@ public class fighting {
             if (point>points){
                 System.out.println("属性点不足,全部属性点将分配给"+attributes[i]);
                 attributePoints[i]+=20;
-                return;
+                break;
             }
             points-=point;
             attributePoints[i]=point;
@@ -54,15 +110,10 @@ public class fighting {
             }
 
         }
-
         hero h=new hero(username,100+attributePoints[0]*10,10+attributePoints[1]*2,attributePoints[2]);
-        System.out.println("角色创建成功");
-        System.out.println("你的初始属性为:"+h.show());
-
         h.skill.add("普通攻击");
         h.skill.add("强力击打");
         h.skill.add("生命汲取");
-
-        System.out.println("你的技能为:"+h.skill.toString());
+        return h;
     }
 }

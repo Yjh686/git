@@ -79,6 +79,8 @@ public class login {
             }
             if(password.equals(list.get(index).getPassword())){
                 System.out.println("登录成功");
+                fighting f=new fighting();
+                f.fightstart(list.get(index).getUsername());
                 return;
             }
         }

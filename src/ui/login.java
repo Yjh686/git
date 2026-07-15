@@ -12,7 +12,7 @@ public class login {
     public void start(){
         while (true) {
             System.out.println("-----------------------------");
-            System.out.println("---------欢迎来到我的游戏--------");
+            System.out.println("--------♟欢迎来到yjh的游戏♟----");
             System.out.println("-----------------------------");
             System.out.println("1.登录   2.注册    3.退出");
             Scanner sc =new Scanner(System.in);
